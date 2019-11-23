@@ -6,15 +6,13 @@ language: python
 dist: bionic
 python:
     - "2.7"
-    - "3.4"
+    - "3.5"
 virtualenv:
     system_site_packages: true
 
 # Manage the C/C++ compiler manually
 env:
     - CC=gcc     CXX=g++
-    - CC=gcc-4.8 CXX=g++-4.8
-    - CC=gcc-4.9 CXX=g++-4.9
     - CC=gcc-5   CXX=g++-5
     - CC=clang   CXX=clang++
 
@@ -23,10 +21,6 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - gcc-4.8
-            - g++-4.8
-            - gcc-4.9
-            - g++-4.9
             - gcc-5
             - g++-5
             - scons
