@@ -7,8 +7,6 @@ dist: bionic
 python:
     - "2.7"
     - "3.5"
-virtualenv:
-    system_site_packages: true
 
 # Manage the C/C++ compiler manually
 env:
