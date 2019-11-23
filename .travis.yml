@@ -30,7 +30,7 @@ addons:
             - gcc-5
             - g++-5
             - scons
-            - protobuf-compiler=3.0.0-9
+            - protobuf-compiler
 
 
 before_install:
