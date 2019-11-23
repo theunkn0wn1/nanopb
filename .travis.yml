@@ -28,6 +28,7 @@ addons:
             - gcc-5
             - g++-5
             - scons
+            - protobuf-compiler
 
 
 before_install:
@@ -36,6 +37,7 @@ before_install:
     - $CC --version
     - $CXX --version
     - python --version
+    - pip install protobuf
     - lsb_release -a
 
 # Seems to be issues with concurrent builds
@@ -43,18 +45,18 @@ before_install:
 #    directories:
 #        - $HOME/protobuf
 
-# Rather then compile protobuf 3 from source, use the binaries now available
-# to speed up build time and reduce surprises until Ubuntu adds protobuf3
-# packages to the repository.
-install:
-    - mkdir -p $HOME/protobuf && pushd $HOME/protobuf
-      && curl -LO 'https://github.com/google/protobuf/releases/download/v3.4.0/protoc-3.4.0-linux-x86_64.zip'
-      && unzip protoc-3.4.0-linux-x86_64.zip
-      && popd
-    - curl -L 'https://github.com/google/protobuf/releases/download/v3.4.0/protobuf-python-3.4.0.tar.gz' | tar xzf -
-      && pushd protobuf-3.4.0/python
-      && python setup.py build && python setup.py install
-      && popd
+## Rather then compile protobuf 3 from source, use the binaries now available
+## to speed up build time and reduce surprises until Ubuntu adds protobuf3
+## packages to the repository.
+#install:
+#    - mkdir -p $HOME/protobuf && pushd $HOME/protobuf
+#      && curl -LO 'https://github.com/google/protobuf/releases/download/v3.4.0/protoc-3.4.0-linux-x86_64.zip'
+#      && unzip protoc-3.4.0-linux-x86_64.zip
+#      && popd
+#    - curl -L 'https://github.com/google/protobuf/releases/download/v3.4.0/protobuf-python-3.4.0.tar.gz' | tar xzf -
+#      && pushd protobuf-3.4.0/python
+#      && python setup.py build && python setup.py install
+#      && popd
 
 script:
     - pushd generator/proto && make && popd
