@@ -37,7 +37,6 @@ before_install:
     - $CC --version
     - $CXX --version
     - python --version
-    - pip install protobuf
     - lsb_release -a
 
 # Seems to be issues with concurrent builds
@@ -48,7 +47,8 @@ before_install:
 ## Rather then compile protobuf 3 from source, use the binaries now available
 ## to speed up build time and reduce surprises until Ubuntu adds protobuf3
 ## packages to the repository.
-#install:
+install:
+  - pip install protobuf
 #    - mkdir -p $HOME/protobuf && pushd $HOME/protobuf
 #      && curl -LO 'https://github.com/google/protobuf/releases/download/v3.4.0/protoc-3.4.0-linux-x86_64.zip'
 #      && unzip protoc-3.4.0-linux-x86_64.zip
